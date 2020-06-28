@@ -55,10 +55,50 @@ public class V {
         System.out.println();
     }
 
+    public static V cp(V a, V b) {
+        double a1 = a.x;
+        double a2 = a.y;
+        double a3 = a.z;
+        double b1 = b.x;
+        double b2 = b.y;
+        double b3 = b.z;
+
+        return new V((a2*b3 - a3*b2),(a3*b1 - a1*b3),(a1*b2 - a2*b1));
+    }
+
+    public static V add(V a, V b) {
+        V ret = new V();
+        ret.x = a.x + b.x;
+        ret.y = a.y + b.y;
+        ret.z = a.z + b.z;
+        return ret;
+    }
+    public static V sub(V a, V b) {
+        V ret = new V();
+        ret.x = a.x - b.x;
+        ret.y = a.y - b.y;
+        ret.z = a.z - b.z;
+        return ret;
+    }
+
+    public double norm() {
+        return Math.sqrt((this.x*this.x + this.y*this.y + this.z*this.z));
+    }
+
+    public static double norm(V a) {
+        return a.norm();
+    }
+
+    public void normalize() {
+        double n = this.norm();
+        this.x = this.x/n;
+        this.y = this.y/n;
+        this.z = this.z/n;
+    }
 
 
     public static void main(String[] args) {
-        double a = 0;
+        //double a = 0;
         double[][] A = new double[][] {{1,0,0},{1,2,3},{3,3,3}};
         /* for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -81,6 +121,8 @@ public class V {
 
 
     }
+
+    
 
 
 

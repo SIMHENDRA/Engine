@@ -63,6 +63,7 @@ public class Mesh {
                 j.trans3x3(A);
                 //j.print();
             }
+            i.updn();
         }
     }
 
@@ -98,6 +99,14 @@ public class Mesh {
         Mesh ret = new Mesh(sz);
         for (int i = 0; i<sz; i++) ret.ts[i] = this.ts[i].tcpy();
         return ret;
+    }
+
+    public void updn() {
+        for (tri i : ts) i.updn();
+    }
+
+    public void updCS(V cam) {
+        for (tri i : ts) i.updCS(cam);
     }
 
     public void print() {

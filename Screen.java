@@ -64,9 +64,12 @@ public class Screen {
     }
 
     public void rendert(tri a) {
-        //renderLn(a.vs[0],a.vs[1],-1);
+        if (!a.cansee) return;
+        else { 
+        renderLn(a.vs[0],a.vs[1],-1);
         renderLn(a.vs[1],a.vs[2],-1);
         renderLn(a.vs[2],a.vs[0],-1);
+        }
     }
 
     public void renderm(Mesh a) {

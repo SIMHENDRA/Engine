@@ -22,6 +22,8 @@ class Game extends Canvas implements Runnable {
     public static int msdel = 1; // delay for pseudo fps control
     public String windowTitle = "3DEngine";
 
+    V camera;
+
     private double scrW = (double)width;
     private double scrH = (double)height;
     double a = (scrH / scrW); //aspect ratio
@@ -58,6 +60,9 @@ class Game extends Canvas implements Runnable {
         setPreferredSize(size);
         screen = new Screen(width,height);
         frame = new JFrame();
+
+        camera = new V(0,0,0);
+
         meshes = new ArrayList<Mesh>();
         thet = 0;
         dy = 0;
@@ -149,7 +154,8 @@ class Game extends Canvas implements Runnable {
         toProj.transm3x3(rotz);
         toProj.transm3x3(rotx);
         //toProj.print();
-        toProj.addz(2.0);
+        toProj.addz(3.0);
+        toProj.updCS(camera);
         
         toProj.project(proj, znq, scrW, scrH);
         //System.out.println("Project....");
