@@ -13,10 +13,29 @@ public class Screen {
     }
 
     public void renderLn(V a, V b, int coll) {
-        int x1 = (int)a.x;
-        int y1 = (int)a.y;
-        int x2 = (int)b.x;
-        int y2 = (int)b.y;
+        int x1, x2, y1, y2;
+        boolean aaa = withinBounds((int)a.x, (int)a.y);
+        boolean bbb = withinBounds((int)b.x, (int)b.y);
+        if ((!aaa)&&(!bbb)) return;
+        else if (aaa && (!bbb)) {
+            x1 = (int)a.x;
+            y1 = (int)a.y;
+            x2 = (int)b.x;
+            y2 = (int)b.y;
+        }
+        else if (bbb && (!aaa)) {
+            x1 = (int)b.x;
+            y1 = (int)b.y;
+            x2 = (int)a.x;
+            y2 = (int)a.y;
+        }
+        else {
+            x1 = (int)a.x;
+            y1 = (int)a.y;
+            x2 = (int)b.x;
+            y2 = (int)b.y;
+        }
+
         if (coll == -1) coll = 0xff00ff;
         
         int d = 0;

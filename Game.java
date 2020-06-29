@@ -27,7 +27,7 @@ class Game extends Canvas implements Runnable {
     private double scrW = (double)width;
     private double scrH = (double)height;
     double a = (scrH / scrW); //aspect ratio
-    double fov = (1.5708); //radians
+    double fov = (1.5708-.6); //radians
     double f = 1.0 / (Math.tan(fov*0.5));
     double zn = 0.1; //nearest z coord
     double zf = 1000; //farthest z coord
@@ -155,6 +155,7 @@ class Game extends Canvas implements Runnable {
         toProj.transm3x3(rotx);
         //toProj.print();
         toProj.addz(3.0);
+        toProj.addx(3.0);
         toProj.updCS(camera);
         
         toProj.project(proj, znq, scrW, scrH);

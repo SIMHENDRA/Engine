@@ -91,9 +91,12 @@ public class V {
 
     public void normalize() {
         double n = this.norm();
+        if (n==0) return;
+        else {
         this.x = this.x/n;
         this.y = this.y/n;
         this.z = this.z/n;
+        }
     }
 
 
